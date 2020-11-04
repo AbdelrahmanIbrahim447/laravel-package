@@ -1,0 +1,15 @@
+{
+    "name": "biscuit/package",
+    "description": "My first package tutorial",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Abdelrahman Ibrahim",
+            "email": "AbdelrahmanIbrahim447@outlook.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "orchestra/testbench": "^6.3"
+    }
+}
