@@ -10,13 +10,15 @@ class PackageBaseServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-
-
+        $this->registerResources();
     }
 
     public function register()
     {
 
-
+    }
+    protected function registerResources()
+    {
+        $this->loadMigrationsFrom(__dir__.'/../src/database/migrations');
     }
 }

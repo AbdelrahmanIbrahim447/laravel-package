@@ -3,8 +3,16 @@
 
 namespace biscuit\package;
 
+use biscuit\package\PackageBaseServiceProvider;
+use biscuit\package\database\factories\PostFactory;
 class TestCase extends \Orchestra\Testbench\TestCase
 {
+    protected function setUp() : void
+    {
+        parent::setUp();
+
+    }
+
     /**
      * Get package providers.
      *
@@ -12,20 +20,19 @@ class TestCase extends \Orchestra\Testbench\TestCase
      *
      * @return array
      */
-    protected function getPackageProviders( $app )
+    protected function getPackageProviders($app)
     {
         return [
-            PackageBaseServiceProvider::class
+            PackageBaseServiceProvider::class,
         ];
     }
-    public function getEnvironmentSetUp( $app )
+
+    protected function getEnvironmentSetUp($app)
     {
         $app['config']->set('database.default', 'testdb');
-
         $app['config']->set('database.connections.testdb', [
-            'driver'    =>  'sqlite',
-            'database'  =>  ':memory:'
+            'driver' => 'sqlite',
+            'database' => ':memory:'
         ]);
-
     }
 }

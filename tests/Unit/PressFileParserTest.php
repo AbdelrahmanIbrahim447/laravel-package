@@ -4,6 +4,7 @@
 namespace biscuit\package\Unit;
 
 
+use biscuit\package\model\Post;
 use biscuit\package\PressFileParser;
 use biscuit\package\TestCase;
 use Carbon\Carbon;
