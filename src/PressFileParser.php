@@ -28,10 +28,12 @@ class PressFileParser
         $this->processField();
     }
 
-    public function getData(){
+    public function getData()
+    {
         return $this->data;
     }
-    public function getRowData(){
+    public function getRowData()
+    {
         return $this->rowData;
     }
     public function splitFile(){
@@ -44,7 +46,7 @@ class PressFileParser
     }
     private function separateHead()
     {
-        foreach (explode("\r\n",trim($this->rowData[1])) as $string)
+        foreach (explode("\n",trim($this->rowData[1])) as $string)
         {
             preg_match(
                 '/(.*):\s?(.*)/',

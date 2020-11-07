@@ -67,14 +67,13 @@ class PressFileParserTest extends TestCase
         $file = (new PressFileParser("---\r\nauthor: Abdelrahman Ibrahim\r\n---"));
 
         $data = $file->getData();
-
         $this->assertContains(json_encode(['author'=>'Abdelrahman Ibrahim']),$data);
     }
 
     /** @test */
     public function test_add_more_than_one_extra_field()
     {
-        $file = (new PressFileParser("---\r\nauthor: Abdelrahman Ibrahim\r\nimage: avatar.png\r\n---"));
+        $file = (new PressFileParser("---\r\nauthor: Abdelrahman Ibrahim\nimage: avatar.png\r\n---"));
 
         $data = $file->getData();
 

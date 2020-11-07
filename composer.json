@@ -26,5 +26,12 @@
             "biscuit\\package\\": "tests/",
             "biscuit\\package\\Database\\Factories\\": "database/factories"
         }
+    },
+    "extra":{
+        "laravel": {
+            "providers": [
+                "biscuit\\package\\PackageBaseServiceProvider"
+            ]
+        }
     }
 }

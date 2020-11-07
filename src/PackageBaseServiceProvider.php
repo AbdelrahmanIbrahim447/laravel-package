@@ -1,6 +1,5 @@
 <?php
 
-
 namespace biscuit\package;
 
 
@@ -15,7 +14,9 @@ class PackageBaseServiceProvider extends ServiceProvider
 
     public function register()
     {
-
+        $this->commands([
+            Console\ProcessCommand::class,
+        ]);
     }
     protected function registerResources()
     {
