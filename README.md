@@ -7,10 +7,6 @@ Add these command
 
 `composer require abdelrahmanibrahim447/package`
 
-And then in the terminal, run the following command.
-
-`composer update`
-
 ### Migrate Database
 
 Now that we have our package installed, we need to migrate the database to add the necessary tables for Press. In the command line, run the following command.
