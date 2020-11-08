@@ -36,6 +36,9 @@ class PackageBaseServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ .'/../config/Press.php' =>  config_path('Press.php'),
         ],'press-config');
+        $this->publishes([
+            __DIR__ .'/stubs/PressServiceProvider.stub' =>  app_path('Providers/PressServiceProvider.php'),
+        ],'press-provider');
     }
     protected function registerRoutes()
     {

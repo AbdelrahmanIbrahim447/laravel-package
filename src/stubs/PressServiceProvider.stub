@@ -1,0 +1,28 @@
+<?php
+
+
+namespace App\Providers;
+
+
+use biscuit\package\facades\Press;
+use Carbon\Laravel\ServiceProvider;
+
+class PressServiceProvider extends ServiceProvider
+{
+    public function boot()
+    {
+        Press::fields($this->registerFields());
+    }
+
+    public function register()
+    {
+
+    }
+
+    private function registerFields()
+    {
+        return [
+            //
+        ];
+    }
+}
