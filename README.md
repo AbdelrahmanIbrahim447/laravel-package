@@ -13,7 +13,7 @@ Add these lines to your `composer.json` file
     "repositories": [
         {
             "type": "git",
-            "url": "https://github.com/biscuite/laravel-package.git"
+            "url": "https://github.com/biscuit/laravel-package.git"
         }
     ]
 }
