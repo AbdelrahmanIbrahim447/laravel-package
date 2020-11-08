@@ -3,10 +3,11 @@
 
 namespace biscuit\package\console;
 
+use biscuit\package\facades\Press;
 use biscuit\package\model\Post;
-use biscuit\package\PressFileParser;
+use biscuit\package\Repositories\PostRepositories;
+use Exception;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 
 class ProcessCommand extends Command
@@ -15,19 +16,27 @@ class ProcessCommand extends Command
 
     protected $description = 'update blog post';
 
-    public function handle()
+    public function handle(PostRepositories $postRepositories)
     {
-        $files = File::files('blogs');
-        foreach ($files as $file)
+        if(Press::configNotPublished())
         {
-            $post = (new PressFileParser($file->getPathname()))->getData();
-            Post::create([
-                'identifier'    =>  Str::random(),
-                'slug'    =>  Str::slug($post['title']),
-                'title'    =>  $post['title'],
-                'body'    =>  $post['body'],
-                'extra'    =>  $post['extra'] ?? [],
-            ]);
+            return $this->warn('Please publish the config by running this command \'php artisan vendor:publish --tag=press-config\' ');
+        }
+
+        try{
+            $posts = Press::dirver()->fetchPosts();
+
+            $this->info('Number of posts is ' . count($posts) );
+
+            foreach ($posts as $post)
+            {
+                $postRepositories->handle($post);
+                $this->info('Post ' . $post['title'] . ' inserted successfully');
+            }
+
+        }catch (Exception $exception)
+        {
+            return $this->error($exception->getMessage());
         }
     }
 }

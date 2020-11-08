@@ -6,6 +6,9 @@ namespace biscuit\package;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
+use Reflection;
+use ReflectionClass;
+use ReflectionException;
 
 class PressFileParser
 {
@@ -51,9 +54,9 @@ class PressFileParser
             preg_match(
                 '/(.*):\s?(.*)/',
                 $string,
-                $fieldArray
+                $fieldsArray
             );
-            $this->data[$fieldArray[1]] = $fieldArray[2];
+            $this->data[$fieldsArray[1]] = $fieldsArray[2];
         }
         $this->data['body'] = trim($this->rowData[2]);
     }
@@ -61,8 +64,7 @@ class PressFileParser
     {
         foreach ($this->data as $field => $value)
         {
-            $class = 'biscuit\\package\\fields\\' . ucfirst($field);
-
+            $class = $this->getFields(ucfirst($field));
             if(! class_exists($class) && ! method_exists($class,'process'))
             {
                 $class = 'biscuit\\package\\fields\\Extra';
@@ -71,6 +73,20 @@ class PressFileParser
                 $this->data,
                 $class::process($field,$value,$this->data)
             );
+        }
+    }
+
+    private function getFields($field)
+    {
+        foreach (\biscuit\package\facades\Press::getFields() as $avalibleField)
+        {
+            $class = new ReflectionClass($avalibleField);
+            if ($class->getShortName() == $field)
+                {
+                    return $class->getName();
+
+                }
+
         }
     }
 }

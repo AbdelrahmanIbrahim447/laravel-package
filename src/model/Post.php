@@ -14,6 +14,10 @@ class Post extends Model
 
     protected $guarded = [];
 
+    public function extra($field)
+    {
+        return optional(json_decode($this->extra))->$field;
+    }
     protected static function newFactory()
     {
         return PostFactory::new();
