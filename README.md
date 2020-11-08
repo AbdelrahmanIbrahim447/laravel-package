@@ -3,21 +3,9 @@ An elegant markdown-powered blog for the Laravel framework.
 
 # Install
 
-Add these lines to your `composer.json` file
+Add these command
 
-```json
-{
-    "require": {
-        "biscuit/package": "dev-master"
-    },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/AbdelrahmanIbrahim447/laravel-package.git"
-        }
-    ]
-}
-```
+`composer require abdelrahmanibrahim447/package`
 
 And then in the terminal, run the following command.
 
