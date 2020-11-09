@@ -3,6 +3,7 @@ An elegant markdown-powered blog for the Laravel framework.
 
 # Install
 
+<<<<<<< HEAD
 Add these lines to your `composer.json` file
 
 ```json
@@ -20,8 +21,11 @@ Add these lines to your `composer.json` file
 ```
 
 And then in the terminal, run the following command.
+=======
+Add these command
+>>>>>>> ba6bb7434472cfd6b12598841543e2bad2e43d8c
 
-`composer update`
+`composer require abdelrahmanibrahim447/package`
 
 ### Migrate Database
 
