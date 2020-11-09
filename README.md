@@ -8,7 +8,7 @@ Add these lines to your `composer.json` file
 ```json
 {
     "require": {
-        "biscuit/package": "dev-master"
+        "abdelrahmanibrahim447/package/package": "dev-master"
     },
     "repositories": [
         {
